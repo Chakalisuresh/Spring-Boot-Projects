@@ -1,0 +1,86 @@
+<!-- User Reservation Table -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation Management System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">RRS Restaurant</a>
+        
+   
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+    </nav>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                <h1 class="text-center" >Table Reservation</h1>
+                <br>
+                <div class="card-body">
+                    <form th:action="@{/updateUserTableById/{id}(id=${id})}" th:object="${table}" method="POST">
+                        <div class="form-group">
+                            <label> Table Number </label>
+                            <input type="number" th:field="*{tableNumber}" name="tableNumber" class="form-control"
+                                placeholder="Enter the table Number" readonly/>
+                        </div>
+
+                        <div class="form-group">
+                            <label> Seating capacity </label>
+                            <input type="number" th:field="*{seatingCapacity}"  name="seatingCapacity" class="form-control"
+                                placeholder="Enter the seating capacity" readonly/>
+                        </div>
+
+                       <div class="form-group">
+                            <label> Duration </label>
+                           <input type="datetime-local" th:field="*{duration}" name="duration"  class="form-control"
+                               placeholder="Enter Reservation time" required autofocus="autofocus"/>
+                        </div>
+
+                        <div class="form-group">
+                           <label for="status">Status</label>
+							<select id="status" th:field="*{status}" class="form-control" required autofocus="autofocus" >
+								<option value="Available">Available</option>
+								<option value="Reserved">Reserve</option>
+							</select>
+                      </div>
+                      
+                      <div class="form-group">
+							<label> UserName </label>
+							<input type="text" th:field="*{userName}" name="username" class="form-control" required autofocus="autofocus"/>
+						</div>
+
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
